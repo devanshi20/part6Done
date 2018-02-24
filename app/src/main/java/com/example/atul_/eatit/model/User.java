@@ -8,6 +8,8 @@ public class User {
     private String Name;
     private  String Password;
     private String Phone;
+    private String SecureCode;
+    private String IsStaff;
 
 
 
@@ -44,6 +46,14 @@ public class User {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public void setSecureCode(String secureCode) {
+        SecureCode = secureCode;
+    }
+
+    public void setIsStaff(String isStaff) {
+        IsStaff = isStaff;
     }
 }
 

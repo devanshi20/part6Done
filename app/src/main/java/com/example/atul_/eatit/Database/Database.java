@@ -28,7 +28,7 @@ import static android.R.attr.name;
 public class Database extends SQLiteAssetHelper {
 
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 4;
     public static final String DATABASE_NAME = "EatIt.db";
 
 
@@ -79,7 +79,7 @@ public class Database extends SQLiteAssetHelper {
 
     public void addToCart(Order order1) {
         SQLiteDatabase db = getReadableDatabase();
-        String query = String.format("INSERT INTO OrderDetail(pro_id,name,price,quantity,discount) VALUES('%s','%s','%s','%s','%s');",
+        String query = String.format("INSERT INTO OrderDetail(ProductID,ProductNAME,Price,Quantity,Discount) VALUES('%s','%s','%s','%s','%s');",
 
 
 
