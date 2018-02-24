@@ -70,8 +70,7 @@ public class FoodDetail extends AppCompatActivity {
 
                  Toast.makeText(FoodDetail.this, "Added to cart ", Toast.LENGTH_SHORT).show();
 
-                 Intent database = new Intent(FoodDetail.this,Database.class);
-                                           startActivity(database);
+
 
                                        }
 

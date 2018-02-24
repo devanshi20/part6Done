@@ -1,8 +1,10 @@
 package com.example.atul_.eatit;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.Nullable;
+import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +20,18 @@ public class MainActivity extends AppCompatActivity {
     Button btnSignIn ,btnSignUp;
     TextView txtSlogan;
 
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);

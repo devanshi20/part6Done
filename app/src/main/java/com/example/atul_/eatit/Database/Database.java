@@ -31,12 +31,8 @@ public class Database extends SQLiteAssetHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "EatIt.db";
 
-    public static final String TABLE_NAME = "OrderDetail";
-    public static final String ProductID = "ProductId";
-    public static final String ProductNAME = "ProductName";
-    public static final String Price = "Price";
-    public static final String Quantity = "Quantity";
-    public static final String Discount = "Discount";
+
+
     //Create Table Query
 
 
@@ -57,7 +53,7 @@ public class Database extends SQLiteAssetHelper {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
         String[] sqlSelect={"ProductID,ProductNAME,Quantity,Price,Discount"};
-        String sqlTable=TABLE_NAME;
+        String sqlTable="OrderDetail";
 
         qb.setTables(sqlTable);
 
@@ -83,7 +79,7 @@ public class Database extends SQLiteAssetHelper {
 
     public void addToCart(Order order1) {
         SQLiteDatabase db = getReadableDatabase();
-        String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount) VALUES('%s','%s','%s','%s','%s');",
+        String query = String.format("INSERT INTO OrderDetail(pro_id,name,price,quantity,discount) VALUES('%s','%s','%s','%s','%s');",
 
 
 
