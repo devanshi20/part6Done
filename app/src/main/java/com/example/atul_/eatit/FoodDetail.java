@@ -1,6 +1,8 @@
 package com.example.atul_.eatit;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +30,7 @@ public class FoodDetail extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     FloatingActionButton btnCart;
     ElegantNumberButton numberButton;
+    SQLiteDatabase db;
 
 
 
@@ -81,6 +84,8 @@ public class FoodDetail extends AppCompatActivity {
         food_price = (TextView)findViewById(R.id.food_price);
         food_name = (TextView)findViewById(R.id.food_name);
         food_image = (ImageView)findViewById(R.id.img_food);
+
+        db=openOrCreateDatabase("EatIt.db", Context.MODE_PRIVATE ,null   );
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
      // collapsingToolbarLayout = setExpandedTitleAppearance(R.style.ExpandedAppbar);
