@@ -7,7 +7,7 @@ android {
         multiDexEnabled true
         applicationId "com.example.atul_.eatit"
         minSdkVersion 17
-        targetSdkVersion 25
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,7 +29,7 @@ dependencies {
 
 
     compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:multidex:1.0.0'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.cepheuen.elegant-number-button:lib:1.0.2'

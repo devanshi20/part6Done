@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 
@@ -49,6 +50,15 @@ public class Database extends SQLiteAssetHelper {
 
     public List<Order>getCarts()
     {
+        try{
+            String path = "D:/EatIt.db" + DATABASE_NAME;
+            SQLiteDatabase checkDB = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
+            System.out.println(checkDB);
+        } catch(SQLiteException e){
+            System.out.println("Exception");
+        }
+
+
             SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
@@ -78,7 +88,7 @@ public class Database extends SQLiteAssetHelper {
 
 
     public void addToCart(Order order1) {
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         String query = String.format("INSERT INTO OrderDetail(ProductID,ProductNAME,Price,Quantity,Discount) VALUES('%s','%s','%s','%s','%s');",
 
 
