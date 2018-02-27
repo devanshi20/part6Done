@@ -7,6 +7,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ public class FoodDetail extends AppCompatActivity {
     FloatingActionButton btnCart;
     ElegantNumberButton numberButton;
     SQLiteDatabase db;
+    Order o;
+    Database d;
 
 
 
@@ -45,14 +48,22 @@ public class FoodDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
-
+        db=openOrCreateDatabase("EatIt.db", Context.MODE_PRIVATE ,null   );
 
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Food");
-
         numberButton = (ElegantNumberButton)findViewById(R.id.number_button);
 
+
         btnCart = (FloatingActionButton)findViewById(R.id.btnCart);
+        final String name=currentFood.getName();
+        final String qty=numberButton.getNumber();
+        final String price=currentFood.getPrice();
+        final String disc=currentFood.getDiscount();
+
+        Order o=new Order(foodId, name, qty, price, disc);
+
+
         btnCart.setOnClickListener(new View.OnClickListener() {
 
              @Override
@@ -60,16 +71,9 @@ public class FoodDetail extends AppCompatActivity {
 
                                        public void onClick(View view) {
 
-
-                                           new Database(getBaseContext()).addToCart(new Order(
-                                                   foodId,
-                                                   currentFood.getName(),
-                                                   numberButton.getNumber(),
-                                                   currentFood.getPrice(),
-                                                   currentFood.getDiscount()
+                 d.insert(foodId, name, qty, price, disc);
 
 
-                                           ));
 
                  Toast.makeText(FoodDetail.this, "Added to cart ", Toast.LENGTH_SHORT).show();
 
@@ -85,7 +89,8 @@ public class FoodDetail extends AppCompatActivity {
         food_name = (TextView)findViewById(R.id.food_name);
         food_image = (ImageView)findViewById(R.id.img_food);
 
-        db=openOrCreateDatabase("EatIt.db", Context.MODE_PRIVATE ,null   );
+
+
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing);
      // collapsingToolbarLayout = setExpandedTitleAppearance(R.style.ExpandedAppbar);

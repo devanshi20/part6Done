@@ -1,6 +1,7 @@
 package com.example.atul_.eatit.Database;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,13 +13,13 @@ import android.os.Bundle;
 
 import com.example.atul_.eatit.model.Order;
 import com.google.firebase.database.ValueEventListener;
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.name;
+import static android.R.attr.scrollbarThumbHorizontal;
 
 /**
  * Created by atul_ on 31/01/2018.
@@ -27,25 +28,39 @@ import static android.R.attr.name;
 
 
 
-public class Database {
+public  class Database extends SQLiteOpenHelper {
 
 
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME ="EatIt.db";
-    static SQLiteDatabase db;
+
+
+   public static SQLiteDatabase db;
+
+
+    public String f1,f2,f3,f4,f5;
+
+    public Database(Context context) {
+        super(context,DATABASE_NAME ,null, DATABASE_VERSION);
+    }
+    //db=openOrCreateDatabase("EatIt.db", Context.MODE_PRIVATE ,null   );
 
 
 
-     public static void createTable(SQLiteDatabase d)
-     {
-         db=d;
-         db.execSQL("CREATE TABLE IF NOT EXISTS OrderDetail(`ProductId`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n" +
-                 "\t`ProductName`\tTEXT,\n" +
-                 "\t`Price`\tINTEGER,\n" +
-                 "\t`Quantity`\tINTEGER,\n" +
-                 "\t`Discount`\tINTEGER);");
+    @Override
+    public void onCreate(SQLiteDatabase d) {
+
+
+
+    db=d;
+         db.execSQL("CREATE TABLE IF NOT EXISTS OrderDetail(ProductId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE," +
+                 "ProductName TEXT," +
+                 "Price INTEGER," +
+                 "Quantity INTEGER," +
+                 "Discount INTEGER);");
      }
     //Create Table Query
+
 
 
 
@@ -98,23 +113,30 @@ public class Database {
 
 
 
-    public void addToCart(Order order1) {
-        //SQLiteDatabase db = getWritableDatabase();
-        String query = String.format("INSERT INTO OrderDetail(ProductID,ProductNAME,Price,Quantity,Discount) VALUES('%s','%s','%s','%s','%s');",
+    public void insert(String foodId, String name, String number, String price, String discount) {
 
 
+        //String query = String.format("INSERT INTO OrderDetail(ProductId,ProductName,Quantity,Price,Discount) VALUES('%s','%s','%s','%s','%s');",
+         //Order order1 = null;
 
-                order1.getProductID(),
-                order1.getProductNAME(),
-                order1.getQuantity(),
-                order1.getPrice(),
-                order1.getDiscount());
-        db.execSQL(query);
+         SQLiteDatabase db=this.getWritableDatabase();
+
+        ContentValues values=new ContentValues();
+
+        values.put("ProductId",foodId);
+        values.put("ProductName",name);
+        values.put("Quantity",number);
+        values.put("Price",price);
+        values.put("Discount",discount);
+
+        db.insert("OrderDetail", null, values);
 
     }
 
+
+
     public void cleanCart() {
-        SQLiteDatabase db = getReadableDatabase();
+       // SQLiteDatabase db = getReadableDatabase();
         String query = String.format("DELETE FROM OrderDetail");
 
 
@@ -124,7 +146,8 @@ public class Database {
 
 
 
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-
-
+    }
 }
