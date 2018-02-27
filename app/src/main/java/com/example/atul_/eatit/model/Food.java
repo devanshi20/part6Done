@@ -4,7 +4,7 @@ package com.example.atul_.eatit.model;
  * Created by Karan Patel on 17-01-2018.
  */
 
-public class Food {
+public class  Food {
     private String Name,Image, Description,Price,Discount,MenuId;
 
     public Food(){

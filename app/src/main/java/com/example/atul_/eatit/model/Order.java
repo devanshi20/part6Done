@@ -5,8 +5,8 @@ package com.example.atul_.eatit.model;
  */
 
 public class Order {
-    private String ProductID;
-    private String ProductNAME;
+    private String ProductId;
+    private String ProductName;
     private String Quantity;
     private String Price;
     private String Discount;
@@ -17,27 +17,27 @@ public class Order {
 
     public Order(String productId, String productName, String quantity, String price, String discount) {
 
-        ProductID = productId;
-        ProductNAME = productName;
+        ProductId = productId;
+        ProductName = productName;
         Quantity = quantity;
         Price = price;
         Discount = discount;
     }
 
-    public String getProductID() {
-        return ProductID;
+    public String getProductId() {
+        return ProductId;
     }
 
-    public void setProductID(String productId) {
-        ProductID = productId;
+    public void setProductId(String productId) {
+        ProductId = productId;
     }
 
-    public String getProductNAME() {
-        return ProductNAME;
+    public String getProductName() {
+        return ProductName;
     }
 
-    public void setProductNAME(String productName) {
-        ProductNAME = productName;
+    public void setProductName(String productName) {
+        ProductName = productName;
     }
 
     public String getQuantity() {

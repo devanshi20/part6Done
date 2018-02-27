@@ -88,8 +88,10 @@ public  class Database extends SQLiteOpenHelper {
             //SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String[] sqlSelect={"ProductID,ProductNAME,Quantity,Price,Discount"};
+        String[] sqlSelect={"ProductId,ProductName,Quantity,Price,Discount"};
         String sqlTable="OrderDetail";
+
+
 
         qb.setTables(sqlTable);
 
@@ -98,8 +100,8 @@ public  class Database extends SQLiteOpenHelper {
         if(c.moveToFirst())
         {
             do{
-                result.add(new Order(c.getString(c.getColumnIndex("ProductID")),
-                c.getString(c.getColumnIndex("ProductNAME")),
+                result.add(new Order(c.getString(c.getColumnIndex("ProductId")),
+                c.getString(c.getColumnIndex("ProductName")),
                 c.getString(c.getColumnIndex("Quantity")),
                 c.getString(c.getColumnIndex("Price")),
                 c.getString(c.getColumnIndex("Discount"))

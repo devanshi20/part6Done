@@ -48,7 +48,7 @@ public class FoodDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
-        db=openOrCreateDatabase("EatIt.db", Context.MODE_PRIVATE ,null   );
+
 
         database = FirebaseDatabase.getInstance();
         foods = database.getReference("Food");
@@ -56,12 +56,7 @@ public class FoodDetail extends AppCompatActivity {
 
 
         btnCart = (FloatingActionButton)findViewById(R.id.btnCart);
-        final String name=currentFood.getName();
-        final String qty=numberButton.getNumber();
-        final String price=currentFood.getPrice();
-        final String disc=currentFood.getDiscount();
 
-        Order o=new Order(foodId, name, qty, price, disc);
 
 
         btnCart.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +65,12 @@ public class FoodDetail extends AppCompatActivity {
 
 
                                        public void onClick(View view) {
-
-                 d.insert(foodId, name, qty, price, disc);
-
+                 db=openOrCreateDatabase("EatIt.db",Context.MODE_PRIVATE,null);
 
 
                  Toast.makeText(FoodDetail.this, "Added to cart ", Toast.LENGTH_SHORT).show();
+
+
 
 
 
