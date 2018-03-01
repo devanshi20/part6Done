@@ -33,7 +33,7 @@ public class FoodDetail extends AppCompatActivity {
     ElegantNumberButton numberButton;
     SQLiteDatabase db;
     Order o;
-    Database d;
+    Database d=new Database(FoodDetail.this);
 
 
 
@@ -70,6 +70,8 @@ public class FoodDetail extends AppCompatActivity {
 
                  Toast.makeText(FoodDetail.this, "Added to cart ", Toast.LENGTH_SHORT).show();
 
+
+                 d.getAData();
 
 
 

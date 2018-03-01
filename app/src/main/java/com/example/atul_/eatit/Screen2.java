@@ -1,5 +1,6 @@
 package com.example.atul_.eatit;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -7,12 +8,13 @@ import android.widget.TextView;
  * Created by atul_ on 27/02/2018.
  */
 
-public class Screen2  {
+public class Screen2 extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
 // TODO Auto-generated method stub
-    ;
-        TextView showCartContent = TextView)findViewById(R.id.showcart);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.screen2);
+        TextView showCartContent = (TextView)findViewById(R.id.showcart);
         final Controller ct = (Controller)getApplicationContext();
         final int CartSize = ct.getCart().getCartsize();
         String show = "";

@@ -1,6 +1,15 @@
 package com.example.atul_.eatit;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by atul_ on 27/02/2018.
@@ -14,14 +23,14 @@ public class Carrt extends Activity {
         final LinearLayout layout = (LinearLayout)findViewById(R.id.linearMain);
         final Button btn = (Button)findViewById(R.id.second);
         final Controller ct = (Controller) getApplicationContext();
-        ModelProducts products = null;
+        ModalProducts products = null;
         for(int i= 1; i<=7;i++){
             int Price = 15+ i;
-            products = new ModelProducts("Product Item" +i, "Description"+i, Price);
+            products = new ModalProducts("Product Item" +i, "Description"+i, Price);
             ct.setProducts(products);
         }
         int productsize = ct.getProductArraylistsize();
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         for (int j=0;j< productsize;j++){
             String pName = ct.getProducts(j).getProductName();
             int pPrice = ct.getProducts(j).getProductPrice();
@@ -38,11 +47,11 @@ public class Carrt extends Activity {
             btn1.setText("Add to Cart");
             btn1.setLayoutParams(params);
             final int index = j;
-            btn1.setOnClickListener(new OnClickListener() {
+            btn1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-// TODO Auto-generated method stub
+                // TODO Auto-generated method stub
                     Log.i("TAG", "index:"+index);
-                    ModelProducts productsObject = ct.getProducts(index);
+                    ModalProducts productsObject = ct.getProducts(index);
                     if(!ct.getCart().CheckProductInCart(productsObject)){
                         btn1.setText("Item Added");
                         ct.getCart().setProducts(productsObject);
@@ -55,7 +64,7 @@ public class Carrt extends Activity {
             la.addView(btn1);
             layout.addView(la);
         }
-        btn.setOnClickListener(new OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 // TODO Auto-generated method stub
@@ -64,7 +73,9 @@ public class Carrt extends Activity {
             }
         });
     }
-}
 
 
 }
+
+
+

@@ -31,6 +31,8 @@ import static android.R.attr.scrollbarThumbHorizontal;
 public  class Database extends SQLiteOpenHelper {
 
 
+
+
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME ="EatIt.db";
 
@@ -96,6 +98,7 @@ public  class Database extends SQLiteOpenHelper {
         qb.setTables(sqlTable);
 
         Cursor c = qb.query(db,sqlSelect,null,null,null,null,null);
+        Cursor c = qb.query(db,sqlSelect,null,null,null,null,null);
         final List<Order>result = new ArrayList<>();
         if(c.moveToFirst())
         {
@@ -144,6 +147,13 @@ public  class Database extends SQLiteOpenHelper {
 
         db.execSQL(query);
 
+    }
+
+    public Cursor getAData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectAQuery = "SELECT * FROM OrderDetail";
+        Cursor re = db.rawQuery(selectAQuery,null);
+        return re;
     }
 
 

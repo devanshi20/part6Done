@@ -34,16 +34,13 @@ public class Screen1 extends Activity {
         } else
             show = "There is no Items in Shopping Cart";
         showCartContent.setText(show);
-        btn3.setOnClickListener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        btn3.setOnClickListener(new View.OnClickListener() {
 
-            }
 
             public void onClick(View v) {
 // TODO Auto-generated method stub
                                         if(CartSize >0){
-                                            Intent i = new Intent(getBaseContext(),Screen2.class)
+                                            Intent i = new Intent(getBaseContext(),Screen2.class);
                                             startActivity(i);
                                         }else {
 
