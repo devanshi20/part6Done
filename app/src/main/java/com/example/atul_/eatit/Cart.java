@@ -40,6 +40,8 @@ public class Cart extends AppCompatActivity {
     FButton btnPlace;
 
 
+
+
     List<Order> cart = new ArrayList<>();
 
     CartAdapter adapter;

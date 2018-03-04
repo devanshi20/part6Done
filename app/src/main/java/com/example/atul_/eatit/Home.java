@@ -139,10 +139,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                  if (id == R.id.nav_menu) {
                     // Handle the camera action
                 } else if (id == R.id.nav_cart) {
+                     Intent cartintent=new Intent(Home.this,Cart.class);
+                     startActivity(cartintent);
 
                 } else if (id == R.id.nav_order) {
+                     Intent orderstatus=new Intent(Home.this,OrderStatus.class);
+                     startActivity(orderstatus);
 
                 } else if (id == R.id.nav_logout) {
+                     Intent signin=new Intent(Home.this,SignIn.class);
+                     signin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                     startActivity(signin);
 
                 }
 

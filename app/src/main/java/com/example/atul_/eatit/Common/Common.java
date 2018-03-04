@@ -17,4 +17,14 @@ public class Common {
     public static final String USER_KEY="User";
     public static final String PWD="Password";
 
+    public static String codeConversion(String status) {
+        {
+            if (status.equals("0"))
+                return "Placed";
+            else if(status.equals("1"))
+                return "On The Way";
+            else
+                return "Shipped";
+        }
+    }
 }

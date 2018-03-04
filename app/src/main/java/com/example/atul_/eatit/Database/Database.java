@@ -62,17 +62,6 @@ public  class Database extends SQLiteOpenHelper {
                  "Discount INTEGER);");
      }
     //Create Table Query
-
-
-
-
-
-
-
-
-
-
-
     public List<Order>getCarts()
     {
 
@@ -97,8 +86,9 @@ public  class Database extends SQLiteOpenHelper {
 
         qb.setTables(sqlTable);
 
+
         Cursor c = qb.query(db,sqlSelect,null,null,null,null,null);
-        Cursor c = qb.query(db,sqlSelect,null,null,null,null,null);
+
         final List<Order>result = new ArrayList<>();
         if(c.moveToFirst())
         {
